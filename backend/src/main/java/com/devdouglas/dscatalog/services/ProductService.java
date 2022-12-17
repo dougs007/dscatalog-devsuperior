@@ -6,8 +6,8 @@ import com.devdouglas.dscatalog.entities.Category;
 import com.devdouglas.dscatalog.entities.Product;
 import com.devdouglas.dscatalog.repositories.CategoryRepository;
 import com.devdouglas.dscatalog.repositories.ProductRepository;
+import com.devdouglas.dscatalog.services.exceptions.DatabaseException;
 import com.devdouglas.dscatalog.services.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -71,7 +71,7 @@ public class ProductService {
         } catch (EmptyResultDataAccessException e ) {
             throw new ResourceNotFoundException("Id not found " + id);
         } catch (DataIntegrityViolationException e) {
-            throw new ResourceNotFoundException("Integrity violation");
+            throw new DatabaseException("Integrity violation");
         }
     }
 
