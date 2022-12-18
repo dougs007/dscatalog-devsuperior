@@ -1,13 +1,9 @@
 package com.devdouglas.dscatalog.resources;
 
 import com.devdouglas.dscatalog.dto.CategoryDTO;
-import com.devdouglas.dscatalog.entities.Category;
 import com.devdouglas.dscatalog.services.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -18,8 +14,11 @@ import java.net.URI;
 @RequestMapping(value = "/categories")
 public class CategoryResource {
 
-    @Autowired
-    private CategoryService service;
+    private final CategoryService service;
+
+    public CategoryResource(CategoryService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pageable) {
