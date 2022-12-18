@@ -28,12 +28,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ProductResourceTests {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc         mockMvc;
     @Autowired
-    private ObjectMapper objectMapper;
+    private ObjectMapper    objectMapper;
 
     @MockBean
-    private ProductService service;
+    private ProductService  service;
 
     private long existingId;
     private long nonExistingId;
