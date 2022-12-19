@@ -44,7 +44,7 @@ public class ProductService {
         return new ProductDTO(entity);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public ProductDTO insert(ProductDTO dto) {
         Product entity = new Product();
         this.copyDtoToEntity(dto, entity);
@@ -53,7 +53,7 @@ public class ProductService {
         return new ProductDTO(entity);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public ProductDTO update(Long id, ProductDTO dto) {
         try {
             Product entity = repository.getOne(id);
@@ -65,6 +65,7 @@ public class ProductService {
         }
     }
 
+    @Transactional
     public void delete(Long id) {
         try {
             repository.deleteById(id);
